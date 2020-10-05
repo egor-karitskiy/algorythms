@@ -47,3 +47,13 @@ print(res)
 
 
 
+# second variant:
+
+x = int(input())
+x_map = map(int, input().split())
+x_list = list(x_map)
+
+x_list.sort()
+for i in range(0,len(x_list)-1):
+               if x_list[i] == x_list[i+1]:
+                   print (x_list[i])
