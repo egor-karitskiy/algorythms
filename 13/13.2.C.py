@@ -21,7 +21,7 @@ def fibonacci_number(n):
         a, b = b, a + b
     return a
 
+
 with open('input.txt', 'r', encoding='utf8') as f:
     n = int(f.read())
     print(fibonacci_number(n))
-    
