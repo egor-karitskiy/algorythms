@@ -42,6 +42,5 @@ if __name__ == '__main__':
         input_array = list(map(int, input().split()))
     except EOFError:
         input_array = []
-    counting_sort(input_array, 2)
     radix_sort(input_array)
     print(*input_array)
