@@ -1,12 +1,6 @@
-# Посылка 36295621
+# Посылка 36404134
 
 class LexicographicalStr(str):
-    def __ge__(self, other):
-        return self + other >= other + self
-
-    def __le__(self, other):
-        return self + other <= other + self
-
     def __lt__(self, other):
         return self + other < other + self
 
@@ -15,11 +9,11 @@ class LexicographicalStr(str):
 
 
 def biggest_integer(array):
-    array = sorted(array, reverse=True)
+    array = sorted(array, key=LexicographicalStr, reverse=True)
     return ''.join(array)
 
 
 if __name__ == '__main__':
     input()
-    input_array = list(map(LexicographicalStr, input().split()))
+    input_array = input().split()
     print(biggest_integer(input_array))

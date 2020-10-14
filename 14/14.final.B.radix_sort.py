@@ -1,8 +1,7 @@
-# Посылка 36312869
+# Посылка 36404498
 
 def counting_sort(array, digit_pos):
-    array_length = len(array)
-    output_array = [0] * array_length
+    output_array = [0] * len(array)
     digits_counter_array = [0] * 10
     elements_result_positions_array = [0] * 10
     exp = 10 ** digit_pos
@@ -12,7 +11,7 @@ def counting_sort(array, digit_pos):
         digit = element // exp % 10
         digits_counter_array[digit] += 1
 
-    for i in range(0, 9):
+    for i in range(9):
         order_index += digits_counter_array[i]
         if digits_counter_array[i] > 0:
             elements_result_positions_array[i] = order_index
@@ -24,14 +23,14 @@ def counting_sort(array, digit_pos):
         output_array[position_of_element_in_output_array] = element
         elements_result_positions_array[digit] -= 1
 
-    for i in range(0, len(array)):
+    for i in range(len(array)):
         array[i] = output_array[i]
 
 
 def radix_sort(array):
     max_number = max(array)
     max_number_of_digits = len(str(max_number))
-    for digit_position in range(0, max_number_of_digits):
+    for digit_position in range(max_number_of_digits):
         counting_sort(array, digit_position)
 
 
