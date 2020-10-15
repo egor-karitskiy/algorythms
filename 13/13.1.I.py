@@ -41,7 +41,7 @@ class MaxHeap(object):
         return -heapq.heappop(self.heap)
 
 
-def is_equal_sums_possible(num_arr):
+def is_equal_sums_possible_using_heap(num_arr):
     if len(num_arr) <= 1:
         return False
     heap = MaxHeap(num_arr)
@@ -57,7 +57,25 @@ def is_equal_sums_possible(num_arr):
     return False
 
 
+def is_equal_sums_possible(array):
+    if len(array) <= 1:
+        return False
+    array = sorted(array)
+    el1 = array.pop()
+    el2 = array.pop()
+    while el2 != 0:
+        array.append(abs(el1 - el2))
+        array.append(0)
+        array = sorted(array)
+        el1 = array.pop()
+        el2 = array.pop()
+    if el1 == 0:
+        return True
+    return False
+
+
 if __name__ == '__main__':
     input()
     input_array = list(map(int, input().split()))
     print(is_equal_sums_possible(input_array))
+    # print(is_equal_sums_possible_using_heap(input_array))
