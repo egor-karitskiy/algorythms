@@ -17,7 +17,7 @@ def primitive_knapsack(items, knapsack_capacity):
     items = sorted(items, key=lambda x: (-x[0], x[1]))
     res = []
     j = 0
-    while knapsack_capacity > 0:
+    while knapsack_capacity > 0 and j <= len(items) - 1:
         if items[j][1] <= knapsack_capacity:
             res.append(items[j][2])
             knapsack_capacity -= items[j][1]
