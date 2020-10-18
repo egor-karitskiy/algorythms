@@ -13,19 +13,21 @@
 # будут выбраны. Номер предмета - это порядковый номер его появления во
 # входных данных. (Индексация начинается с нуля)
 
-def primitive_knapsack(items, capacity):
+def primitive_knapsack(items, knapsack_capacity):
     items = sorted(items, key=lambda x: (-x[0], x[1]))
     res = []
-    for el in items:
-        if el[1] <= capacity:
-            res.append(el[2])
-            capacity -= el[1]
+    j = 0
+    while knapsack_capacity > 0:
+        if items[j][1] <= knapsack_capacity:
+            res.append(items[j][2])
+            knapsack_capacity -= items[j][1]
+        j += 1
     res = sorted(res)
     return res
 
 
 if __name__ == '__main__':
-    capacity = int(input())
+    capacity_input = int(input())
     number_of_items = int(input())
     items_list = []
     for i in range(number_of_items):
@@ -33,4 +35,4 @@ if __name__ == '__main__':
         item.append(i)
         items_list.append(item)
 
-    print(*primitive_knapsack(items_list, capacity))
+    print(*primitive_knapsack(items_list, capacity_input))
