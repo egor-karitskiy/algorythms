@@ -19,7 +19,17 @@ class StackMaxEffective:
             self.max = item
             self.items.append(item)
         elif item > self.max:
-            tmp = (2 * item) - self.max
+
+            # если item > self.max, то
+            # item - self.max > 0, тогда прибавив item к обеим частям
+            # неравенства получим
+            # item - self.max + item > item, тогда получаем
+            # 2 * item - self.max > item
+            # то есть, вместо item мы можем смело сохранить в стеке вот эту
+            # конструкцию 2 * item - self.max, которая точно больше item и
+            # связывает текущий максимум и значение.
+
+            tmp = 2 * item - self.max
             self.items.append(tmp)
             self.max = item
         else:
@@ -31,7 +41,16 @@ class StackMaxEffective:
         if self.peek() < self.max:
             self.items.pop()
             return None
-        self.max = (2 * self.max) - self.peek()
+
+        # если self.max < self.peek(), тогда
+        # self.max - self.peek() < 0 и, прибавив self.max к обеим частям
+        # неравенства, получим
+        # self.max - self.peek() + self.max < self.max, то есть,
+        # 2 * self.max - self.peek() < self.max
+        # вот так и восстановим предыдущее значение self.max, когда будем
+        # удалять текущий максимум
+
+        self.max = 2 * self.max - self.peek()
         self.items.pop()
         return None
 
