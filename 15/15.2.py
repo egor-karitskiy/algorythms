@@ -27,7 +27,7 @@ def solution(tree_root):
     if (
         abs(height_left - height_right) <= 1 and
         solution(tree_root.left) and
-        solution(tree_root.left)
+        solution(tree_root.right)
     ):
         return True
     return False
