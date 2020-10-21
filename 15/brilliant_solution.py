@@ -13,9 +13,9 @@ class Node:
 def solution(tree_root):
     if tree_root is None:
         return float('-inf')
-    left_find = solution(tree_root.left)
-    right_find = solution(tree_root.right)
-    return max(tree_root.value, left_find, right_find)
+    search_left = solution(tree_root.left)
+    search_right = solution(tree_root.right)
+    return max(tree_root.value, search_left, search_right)
 
 
 if __name__ == '__main__':
