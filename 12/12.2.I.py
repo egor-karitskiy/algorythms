@@ -46,7 +46,10 @@ class StackMaxEffective:
         # self.max - self.peek() < 0 и, прибавив self.max к обеим частям
         # неравенства, получим
         # self.max - self.peek() + self.max < self.max, то есть,
-        # 2 * self.max - self.peek() < self.max
+        # previous.max = 2 * popped.max - 2 * item + previous.max
+        #
+        # 2 * item - previous.max
+
         # вот так и восстановим предыдущее значение self.max, когда будем
         # удалять текущий максимум
 
