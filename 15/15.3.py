@@ -5,18 +5,18 @@ class Node:
         self.left = left
 
 
-def breadth_first_search(root):
+def breadth_first_search(tree_root):
     level = 1
-    current_node_and_level = (root, level)
-    checking_set = set()
+    current_node_and_level = (tree_root, level)
+    node_uniqueness_checking_set = set()
     result = []
     nodes_queue = [current_node_and_level]
     while nodes_queue:
         current_node_and_level = nodes_queue.pop()
         level = current_node_and_level[1]
-        if current_node_and_level[0] not in checking_set:
+        if current_node_and_level[0] not in node_uniqueness_checking_set:
             result.append([current_node_and_level[0].value, level])
-            checking_set.add(current_node_and_level[0])
+            node_uniqueness_checking_set.add(current_node_and_level[0])
         if current_node_and_level[0].left:
             nodes_queue.insert(0, (current_node_and_level[0].left, level + 1))
         if current_node_and_level[0].right:
